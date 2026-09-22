@@ -3,6 +3,8 @@
 **Class:** Implementation and operation guide  
 **Status:** Experimental shared infrastructure and independent domain applications
 
+**Source repository:** [Generativity-Relational-Epistemic-Applicative-Infrastructure](https://github.com/huangwanhong-maker/Generativity-Relational-Epistemic-Applicative-Infrastructure)
+
 This repository provides common record and Git-storage packages, repeatable local setup tools and two application submodules. It implements parts of the Generativity Standards Program's research and working specifications while keeping application behavior, protocol evidence and programme authority distinct.
 
 The current domains are a generalized visual record workspace and Generative Relational Academia. Each has a separate entry point, account database, runtime and source history. Academia retains its native GRRP model; consolidation and shared hosting do not establish interoperability with the generalized protocol.
@@ -40,19 +42,22 @@ This repository is itself a submodule of the programme. Programme standards, spe
 
 ## Clone and maintain submodules
 
-The initial submodule URLs use the existing local repository layout. To obtain this repository and both applications in another directory:
+With GitHub SSH access configured, obtain this repository and both application submodules:
 
 ~~~powershell
-git -c protocol.file.allow=always clone --recurse-submodules "<absolute-path-to-this-infrastructure-repository>" "<new-checkout-directory>"
+git clone --recurse-submodules git@github.com:huangwanhong-maker/Generativity-Relational-Epistemic-Applicative-Infrastructure.git applicative_infrastructure
+cd applicative_infrastructure
 ~~~
 
-For a complete programme checkout, follow the [parent guide](../README.md#obtain-the-complete-workspace). Real hosted remotes are configured separately when publishing; the example does not imply they already exist. The file-transport allowance is scoped to the command.
+The application sources are hosted independently as [Generalized-Generativity-Relational-Social-Science-Application](https://github.com/huangwanhong-maker/Generalized-Generativity-Relational-Social-Science-Application) and [Generative-Relational-Academia-Application](https://github.com/huangwanhong-maker/Generative-Relational-Academia-Application). For the complete programme, recursively clone [Generativity-Epistemic-Infrastructure](https://github.com/huangwanhong-maker/Generativity-Epistemic-Infrastructure) instead. The [programme Git guide](https://github.com/huangwanhong-maker/Generativity-Epistemic-Infrastructure/blob/main/docs/development/git_repository_layers.md) covers SSH configuration and publishing.
 
 Each application is pinned to a specific commit. After changing an application, commit its source there, then commit the changed submodule reference here. If this repository is checked out inside the programme, commit its updated reference in the programme as well. Common-package and launcher edits belong directly to this repository. Use the following to inspect the selected revisions:
 
 ~~~powershell
 git submodule status --recursive
 ~~~
+
+After updating this repository, use `git submodule sync --recursive` and `git submodule update --init --recursive` to restore its committed application revisions. Publish application commits before the infrastructure commit that references them; publish infrastructure before a programme commit that references it. A submodule may have a detached HEAD, so select a development branch before committing application changes.
 
 Source submodules are distinct from the Git repositories that applications create for users' records. Private project repositories belong in runtime storage and are excluded from source version control.
 
