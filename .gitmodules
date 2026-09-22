@@ -1,0 +1,6 @@
+[submodule "gr_generalized_application"]
+	path = gr_generalized_application
+	url = ./gr_generalized_application
+[submodule "gr_academia_application"]
+	path = gr_academia_application
+	url = ./gr_academia_application

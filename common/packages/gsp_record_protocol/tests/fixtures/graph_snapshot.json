@@ -1,0 +1,148 @@
+{
+  "project": {
+    "id": "00000000-0000-0000-0000-000000000001",
+    "name": "Incidence fixture",
+    "schema_version": "gsp-workspace/0.2",
+    "profile": "gsp.general/0.2"
+  },
+  "records": [
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "title": "Fixture account 2",
+      "content": "A stipulated fixture account, not an empirical factual finding.",
+      "record_type": "Entity",
+      "epistemic_mode": "reported",
+      "modality": "unknown",
+      "status": "unreviewed",
+      "related_records": [
+        "00000000-0000-0000-0000-000000000003"
+      ],
+      "schema_version": "gsp-workspace/0.2",
+      "created_at": "2026-09-21T10:00:00Z",
+      "updated_at": "2026-09-21T10:00:00Z",
+      "recorded_by": {
+        "id": "00000000-0000-0000-0000-000000000384",
+        "display_name": "Fixture recorder"
+      },
+      "updated_by": {
+        "id": "00000000-0000-0000-0000-000000000384",
+        "display_name": "Fixture recorder"
+      },
+      "attributed_to": "",
+      "method": "",
+      "evidence": "",
+      "uncertainty": "",
+      "alternatives": "",
+      "conditions": "",
+      "consequences": "",
+      "occurred_at": "",
+      "record_roles": [
+        "Entity"
+      ],
+      "modules": {}
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "title": "Fixture account 3",
+      "content": "A stipulated fixture account, not an empirical factual finding.",
+      "record_type": "Entity",
+      "epistemic_mode": "reported",
+      "modality": "unknown",
+      "status": "unreviewed",
+      "related_records": [],
+      "schema_version": "gsp-workspace/0.2",
+      "created_at": "2026-09-21T10:00:00Z",
+      "updated_at": "2026-09-21T10:00:00Z",
+      "recorded_by": {
+        "id": "00000000-0000-0000-0000-000000000384",
+        "display_name": "Fixture recorder"
+      },
+      "updated_by": {
+        "id": "00000000-0000-0000-0000-000000000384",
+        "display_name": "Fixture recorder"
+      },
+      "attributed_to": "",
+      "method": "",
+      "evidence": "",
+      "uncertainty": "",
+      "alternatives": "",
+      "conditions": "",
+      "consequences": "",
+      "occurred_at": "",
+      "record_roles": [
+        "Entity"
+      ],
+      "modules": {}
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "title": "Fixture account 4",
+      "content": "A stipulated fixture account, not an empirical factual finding.",
+      "record_type": "Relation",
+      "epistemic_mode": "reported",
+      "modality": "unknown",
+      "status": "unreviewed",
+      "related_records": [],
+      "schema_version": "gsp-workspace/0.2",
+      "created_at": "2026-09-21T10:00:00Z",
+      "updated_at": "2026-09-21T10:00:00Z",
+      "recorded_by": {
+        "id": "00000000-0000-0000-0000-000000000384",
+        "display_name": "Fixture recorder"
+      },
+      "updated_by": {
+        "id": "00000000-0000-0000-0000-000000000384",
+        "display_name": "Fixture recorder"
+      },
+      "attributed_to": "",
+      "method": "",
+      "evidence": "",
+      "uncertainty": "",
+      "alternatives": "",
+      "conditions": "",
+      "consequences": "",
+      "occurred_at": "",
+      "record_roles": [
+        "Relation",
+        "Entity"
+      ],
+      "modules": {
+        "gsp.relation": {
+          "version": "1",
+          "required": false,
+          "data": {
+            "predicate": "agreement participation",
+            "participants_complete": true,
+            "participants": [
+              {
+                "id": "00000000-0000-0000-0000-0000000003e8",
+                "record_id": "00000000-0000-0000-0000-000000000002",
+                "role": "issuer",
+                "reference_scope": "represented_target",
+                "orientation": "in"
+              },
+              {
+                "id": "00000000-0000-0000-0000-0000000003e9",
+                "record_id": "00000000-0000-0000-0000-000000000003",
+                "role": "recipient",
+                "reference_scope": "represented_target",
+                "orientation": "out"
+              },
+              {
+                "id": "00000000-0000-0000-0000-0000000003ea",
+                "record_id": "00000000-0000-0000-0000-000000000004",
+                "role": "represented arrangement",
+                "reference_scope": "represented_target",
+                "orientation": "undirected"
+              }
+            ],
+            "context": "Stipulated design example",
+            "identity_criterion": "Tracked fixture arrangement under this declared token",
+            "temporal_scope": "Time not established by this fixture"
+          }
+        }
+      }
+    }
+  ],
+  "head": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+}

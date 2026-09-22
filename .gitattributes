@@ -1,0 +1,4 @@
+# Source provenance uses byte digests; avoid implicit checkout normalization.
+* -text
+*.sh text eol=lf
+*.bundle binary

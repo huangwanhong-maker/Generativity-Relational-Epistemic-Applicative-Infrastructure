@@ -1,0 +1,1043 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generativity.local/experimental/gsp-record-protocol/0.2/protocol.schema.json",
+  "title": "Experimental Generativity record protocol 0.2",
+  "description": "Structural validation only; semantic checks and storage guarantees are separate. Legacy records are assessed after an explicitly declared read adaptation.",
+  "$defs": {
+    "Actor": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+        },
+        "display_name": {
+          "type": "string",
+          "maxLength": 200,
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "display_name"
+      ],
+      "additionalProperties": false
+    },
+    "CoreChanges": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "maxLength": 160,
+          "minLength": 1
+        },
+        "content": {
+          "type": "string",
+          "maxLength": 20000,
+          "minLength": 1
+        },
+        "record_type": {
+          "enum": [
+            "Entity",
+            "State",
+            "Event",
+            "Process",
+            "Relation",
+            "Property"
+          ]
+        },
+        "record_roles": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "Entity",
+              "State",
+              "Event",
+              "Process",
+              "Relation",
+              "Property"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 1,
+          "maxItems": 6
+        },
+        "epistemic_mode": {
+          "enum": [
+            "observed",
+            "reported",
+            "inferred",
+            "interpreted",
+            "retrospective"
+          ]
+        },
+        "modality": {
+          "enum": [
+            "realized",
+            "intended",
+            "possible",
+            "unrealized",
+            "unknown"
+          ]
+        },
+        "status": {
+          "enum": [
+            "unreviewed",
+            "contested",
+            "revised",
+            "withdrawn"
+          ]
+        },
+        "related_records": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+          },
+          "uniqueItems": true,
+          "maxItems": 50
+        },
+        "attributed_to": {
+          "type": "string",
+          "maxLength": 300,
+          "minLength": 0
+        },
+        "method": {
+          "type": "string",
+          "maxLength": 2000,
+          "minLength": 0
+        },
+        "evidence": {
+          "type": "string",
+          "maxLength": 5000,
+          "minLength": 0
+        },
+        "uncertainty": {
+          "type": "string",
+          "maxLength": 3000,
+          "minLength": 0
+        },
+        "alternatives": {
+          "type": "string",
+          "maxLength": 3000,
+          "minLength": 0
+        },
+        "conditions": {
+          "type": "string",
+          "maxLength": 3000,
+          "minLength": 0
+        },
+        "consequences": {
+          "type": "string",
+          "maxLength": 3000,
+          "minLength": 0
+        },
+        "occurred_at": {
+          "type": "string",
+          "maxLength": 100,
+          "minLength": 0
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "Module": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "maxLength": 32,
+          "minLength": 1
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "data": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "version",
+        "data"
+      ],
+      "additionalProperties": false
+    },
+    "Record": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "maxLength": 160,
+          "minLength": 1
+        },
+        "content": {
+          "type": "string",
+          "maxLength": 20000,
+          "minLength": 1
+        },
+        "record_type": {
+          "enum": [
+            "Entity",
+            "State",
+            "Event",
+            "Process",
+            "Relation",
+            "Property"
+          ]
+        },
+        "record_roles": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "Entity",
+              "State",
+              "Event",
+              "Process",
+              "Relation",
+              "Property"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 1,
+          "maxItems": 6
+        },
+        "epistemic_mode": {
+          "enum": [
+            "observed",
+            "reported",
+            "inferred",
+            "interpreted",
+            "retrospective"
+          ]
+        },
+        "modality": {
+          "enum": [
+            "realized",
+            "intended",
+            "possible",
+            "unrealized",
+            "unknown"
+          ]
+        },
+        "status": {
+          "enum": [
+            "unreviewed",
+            "contested",
+            "revised",
+            "withdrawn"
+          ]
+        },
+        "related_records": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+          },
+          "uniqueItems": true,
+          "maxItems": 50
+        },
+        "attributed_to": {
+          "type": "string",
+          "maxLength": 300,
+          "minLength": 0
+        },
+        "method": {
+          "type": "string",
+          "maxLength": 2000,
+          "minLength": 0
+        },
+        "evidence": {
+          "type": "string",
+          "maxLength": 5000,
+          "minLength": 0
+        },
+        "uncertainty": {
+          "type": "string",
+          "maxLength": 3000,
+          "minLength": 0
+        },
+        "alternatives": {
+          "type": "string",
+          "maxLength": 3000,
+          "minLength": 0
+        },
+        "conditions": {
+          "type": "string",
+          "maxLength": 3000,
+          "minLength": 0
+        },
+        "consequences": {
+          "type": "string",
+          "maxLength": 3000,
+          "minLength": 0
+        },
+        "occurred_at": {
+          "type": "string",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+        },
+        "schema_version": {
+          "enum": [
+            "gsp-workspace/0.1",
+            "gsp-workspace/0.2"
+          ]
+        },
+        "modules": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[a-z][a-z0-9_-]*(?:[.:][a-z][a-z0-9_-]*)+(?![\\s\\S])",
+            "maxLength": 100
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/Module"
+          },
+          "maxProperties": 32
+        },
+        "created_at": {
+          "type": "string",
+          "maxLength": 100,
+          "minLength": 1
+        },
+        "updated_at": {
+          "type": "string",
+          "maxLength": 100,
+          "minLength": 1
+        },
+        "recorded_by": {
+          "$ref": "#/$defs/Actor"
+        },
+        "updated_by": {
+          "$ref": "#/$defs/Actor"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "content",
+        "record_type",
+        "record_roles",
+        "epistemic_mode",
+        "modality",
+        "status",
+        "related_records",
+        "schema_version",
+        "modules",
+        "created_at",
+        "updated_at",
+        "recorded_by",
+        "updated_by"
+      ],
+      "additionalProperties": false
+    },
+    "Participant": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+        },
+        "record_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+        },
+        "role": {
+          "type": "string",
+          "maxLength": 120,
+          "minLength": 1
+        },
+        "reference_scope": {
+          "enum": [
+            "record",
+            "represented_target"
+          ]
+        },
+        "orientation": {
+          "enum": [
+            "in",
+            "out",
+            "undirected"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "record_id",
+        "role",
+        "reference_scope",
+        "orientation"
+      ],
+      "additionalProperties": false
+    },
+    "RelationData": {
+      "type": "object",
+      "properties": {
+        "predicate": {
+          "type": "string",
+          "maxLength": 160,
+          "minLength": 1
+        },
+        "predicate_definition": {
+          "type": "string",
+          "maxLength": 3000,
+          "minLength": 0
+        },
+        "participants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Participant"
+          },
+          "minItems": 1,
+          "maxItems": 32
+        },
+        "participants_complete": {
+          "type": "boolean"
+        },
+        "participant_limitations": {
+          "type": "string",
+          "maxLength": 3000,
+          "minLength": 0
+        },
+        "context": {
+          "type": "string",
+          "maxLength": 3000,
+          "minLength": 0
+        },
+        "identity_criterion": {
+          "type": "string",
+          "maxLength": 3000,
+          "minLength": 0
+        },
+        "temporal_scope": {
+          "type": "string",
+          "maxLength": 1000,
+          "minLength": 0
+        }
+      },
+      "required": [
+        "predicate",
+        "participants",
+        "participants_complete"
+      ],
+      "additionalProperties": false
+    },
+    "NotesData": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "maxLength": 50000,
+          "minLength": 0
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "FileDescriptor": {
+      "type": "object",
+      "properties": {
+        "file_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+        },
+        "filename": {
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "media_type": {
+          "type": "string",
+          "maxLength": 200,
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}(?![\\s\\S])"
+        },
+        "byte_length": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10485760
+        },
+        "uploaded_by": {
+          "$ref": "#/$defs/Actor"
+        },
+        "uploaded_at": {
+          "type": "string",
+          "maxLength": 100,
+          "minLength": 1
+        }
+      },
+      "required": [
+        "file_id",
+        "filename",
+        "media_type",
+        "sha256",
+        "byte_length",
+        "uploaded_by",
+        "uploaded_at"
+      ],
+      "additionalProperties": false
+    },
+    "FilesData": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FileDescriptor"
+          },
+          "maxItems": 1000
+        }
+      },
+      "required": [
+        "items"
+      ],
+      "additionalProperties": false
+    },
+    "Transaction": {
+      "type": "object",
+      "properties": {
+        "protocol_version": {
+          "const": "gsp-record-protocol/0.2"
+        },
+        "transaction_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+        },
+        "expected_head": {
+          "type": "string",
+          "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})(?![\\s\\S])"
+        },
+        "reason": {
+          "type": "string",
+          "maxLength": 2000,
+          "minLength": 1
+        },
+        "change_categories": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "description",
+              "represented_change",
+              "evidence_or_interpretation",
+              "classification",
+              "maintenance",
+              "migration"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 6,
+          "uniqueItems": true
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "const": "record.create"
+                  },
+                  "record": {
+                    "type": "object",
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "maxLength": 160,
+                        "minLength": 1
+                      },
+                      "content": {
+                        "type": "string",
+                        "maxLength": 20000,
+                        "minLength": 1
+                      },
+                      "record_type": {
+                        "enum": [
+                          "Entity",
+                          "State",
+                          "Event",
+                          "Process",
+                          "Relation",
+                          "Property"
+                        ]
+                      },
+                      "record_roles": {
+                        "type": "array",
+                        "items": {
+                          "enum": [
+                            "Entity",
+                            "State",
+                            "Event",
+                            "Process",
+                            "Relation",
+                            "Property"
+                          ]
+                        },
+                        "uniqueItems": true,
+                        "minItems": 1,
+                        "maxItems": 6
+                      },
+                      "epistemic_mode": {
+                        "enum": [
+                          "observed",
+                          "reported",
+                          "inferred",
+                          "interpreted",
+                          "retrospective"
+                        ]
+                      },
+                      "modality": {
+                        "enum": [
+                          "realized",
+                          "intended",
+                          "possible",
+                          "unrealized",
+                          "unknown"
+                        ]
+                      },
+                      "status": {
+                        "enum": [
+                          "unreviewed",
+                          "contested",
+                          "revised",
+                          "withdrawn"
+                        ]
+                      },
+                      "related_records": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+                        },
+                        "uniqueItems": true,
+                        "maxItems": 50
+                      },
+                      "attributed_to": {
+                        "type": "string",
+                        "maxLength": 300,
+                        "minLength": 0
+                      },
+                      "method": {
+                        "type": "string",
+                        "maxLength": 2000,
+                        "minLength": 0
+                      },
+                      "evidence": {
+                        "type": "string",
+                        "maxLength": 5000,
+                        "minLength": 0
+                      },
+                      "uncertainty": {
+                        "type": "string",
+                        "maxLength": 3000,
+                        "minLength": 0
+                      },
+                      "alternatives": {
+                        "type": "string",
+                        "maxLength": 3000,
+                        "minLength": 0
+                      },
+                      "conditions": {
+                        "type": "string",
+                        "maxLength": 3000,
+                        "minLength": 0
+                      },
+                      "consequences": {
+                        "type": "string",
+                        "maxLength": 3000,
+                        "minLength": 0
+                      },
+                      "occurred_at": {
+                        "type": "string",
+                        "maxLength": 100,
+                        "minLength": 0
+                      },
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+                      },
+                      "modules": {
+                        "type": "object",
+                        "propertyNames": {
+                          "pattern": "^[a-z][a-z0-9_-]*(?:[.:][a-z][a-z0-9_-]*)+(?![\\s\\S])",
+                          "maxLength": 100
+                        },
+                        "additionalProperties": {
+                          "$ref": "#/$defs/Module"
+                        },
+                        "maxProperties": 32
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "title",
+                      "content",
+                      "record_type",
+                      "epistemic_mode"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "op",
+                  "record"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "const": "record.update"
+                  },
+                  "record_id": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+                  },
+                  "changes": {
+                    "type": "object",
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "maxLength": 160,
+                        "minLength": 1
+                      },
+                      "content": {
+                        "type": "string",
+                        "maxLength": 20000,
+                        "minLength": 1
+                      },
+                      "record_type": {
+                        "enum": [
+                          "Entity",
+                          "State",
+                          "Event",
+                          "Process",
+                          "Relation",
+                          "Property"
+                        ]
+                      },
+                      "record_roles": {
+                        "type": "array",
+                        "items": {
+                          "enum": [
+                            "Entity",
+                            "State",
+                            "Event",
+                            "Process",
+                            "Relation",
+                            "Property"
+                          ]
+                        },
+                        "uniqueItems": true,
+                        "minItems": 1,
+                        "maxItems": 6
+                      },
+                      "epistemic_mode": {
+                        "enum": [
+                          "observed",
+                          "reported",
+                          "inferred",
+                          "interpreted",
+                          "retrospective"
+                        ]
+                      },
+                      "modality": {
+                        "enum": [
+                          "realized",
+                          "intended",
+                          "possible",
+                          "unrealized",
+                          "unknown"
+                        ]
+                      },
+                      "status": {
+                        "enum": [
+                          "unreviewed",
+                          "contested",
+                          "revised",
+                          "withdrawn"
+                        ]
+                      },
+                      "related_records": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+                        },
+                        "uniqueItems": true,
+                        "maxItems": 50
+                      },
+                      "attributed_to": {
+                        "type": "string",
+                        "maxLength": 300,
+                        "minLength": 0
+                      },
+                      "method": {
+                        "type": "string",
+                        "maxLength": 2000,
+                        "minLength": 0
+                      },
+                      "evidence": {
+                        "type": "string",
+                        "maxLength": 5000,
+                        "minLength": 0
+                      },
+                      "uncertainty": {
+                        "type": "string",
+                        "maxLength": 3000,
+                        "minLength": 0
+                      },
+                      "alternatives": {
+                        "type": "string",
+                        "maxLength": 3000,
+                        "minLength": 0
+                      },
+                      "conditions": {
+                        "type": "string",
+                        "maxLength": 3000,
+                        "minLength": 0
+                      },
+                      "consequences": {
+                        "type": "string",
+                        "maxLength": 3000,
+                        "minLength": 0
+                      },
+                      "occurred_at": {
+                        "type": "string",
+                        "maxLength": 100,
+                        "minLength": 0
+                      }
+                    },
+                    "required": [],
+                    "additionalProperties": false,
+                    "minProperties": 1
+                  }
+                },
+                "required": [
+                  "op",
+                  "record_id",
+                  "changes"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "const": "module.set"
+                  },
+                  "record_id": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+                  },
+                  "module_id": {
+                    "type": "string",
+                    "maxLength": 100,
+                    "minLength": 1
+                  },
+                  "module": {
+                    "$ref": "#/$defs/Module"
+                  }
+                },
+                "required": [
+                  "op",
+                  "record_id",
+                  "module_id",
+                  "module"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "const": "module.remove"
+                  },
+                  "record_id": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+                  },
+                  "module_id": {
+                    "type": "string",
+                    "maxLength": 100,
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "op",
+                  "record_id",
+                  "module_id"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "enum": [
+                      "file.attach",
+                      "file.replace"
+                    ]
+                  },
+                  "record_id": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+                  },
+                  "file_id": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+                  },
+                  "part": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}(?![\\s\\S])",
+                    "not": {
+                      "const": "transaction"
+                    }
+                  },
+                  "filename": {
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                  },
+                  "media_type": {
+                    "type": "string",
+                    "maxLength": 200,
+                    "minLength": 1
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}(?![\\s\\S])"
+                  },
+                  "byte_length": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10485760
+                  }
+                },
+                "required": [
+                  "op",
+                  "record_id",
+                  "file_id",
+                  "part",
+                  "filename",
+                  "media_type",
+                  "sha256",
+                  "byte_length"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "const": "file.detach"
+                  },
+                  "record_id": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+                  },
+                  "file_id": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+                  }
+                },
+                "required": [
+                  "op",
+                  "record_id",
+                  "file_id"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "const": "project.migrate"
+                  }
+                },
+                "required": [
+                  "op"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 100
+        }
+      },
+      "required": [
+        "protocol_version",
+        "transaction_id",
+        "expected_head",
+        "reason",
+        "change_categories",
+        "operations"
+      ],
+      "additionalProperties": false
+    },
+    "Snapshot": {
+      "type": "object",
+      "properties": {
+        "project": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+            },
+            "schema_version": {
+              "enum": [
+                "gsp-workspace/0.1",
+                "gsp-workspace/0.2"
+              ]
+            },
+            "profile": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            }
+          },
+          "required": [
+            "id",
+            "schema_version"
+          ],
+          "additionalProperties": true
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Record"
+          },
+          "maxItems": 1000
+        },
+        "head": {
+          "type": "string",
+          "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})(?![\\s\\S])"
+        }
+      },
+      "required": [
+        "project",
+        "records",
+        "head"
+      ],
+      "additionalProperties": true
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/Transaction"
+    },
+    {
+      "$ref": "#/$defs/Snapshot"
+    }
+  ]
+}

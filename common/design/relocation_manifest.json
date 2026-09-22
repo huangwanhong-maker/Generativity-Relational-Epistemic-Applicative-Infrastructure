@@ -1,0 +1,258 @@
+{
+  "class": "Implementation relocation provenance",
+  "status": "Relocation verified; original local source trees retained under ignored build/retired-*",
+  "captured_at": "2026-09-22T08:57:11.781652+00:00",
+  "scope": "Source only; runtime and environment excluded",
+  "files": [
+    {
+      "source": "packages/gsp_record_protocol/README.md",
+      "destination": "applicative_infrastructure/common/packages/gsp_record_protocol/README.md",
+      "source_sha256": "07fa89d80450188e5fd829e879e0742ce3050b2d521f7739967507d9b17c5229",
+      "destination_sha256": "636bce89c582e23df5166d84d38af971ab1a2ab8bff522cd3cc071e1b0edd62b",
+      "relocation_changed_bytes": true
+    },
+    {
+      "source": "packages/gsp_record_protocol/pyproject.toml",
+      "destination": "applicative_infrastructure/common/packages/gsp_record_protocol/pyproject.toml",
+      "source_sha256": "ce8a54b3e04fca408ab222acff9b4142b5ce82642c576d3dd762cbce5b34ee3e",
+      "destination_sha256": "ce8a54b3e04fca408ab222acff9b4142b5ce82642c576d3dd762cbce5b34ee3e",
+      "relocation_changed_bytes": false
+    },
+    {
+      "source": "packages/gsp_record_protocol/src/gsp_protocol/__init__.py",
+      "destination": "applicative_infrastructure/common/packages/gsp_record_protocol/src/gsp_protocol/__init__.py",
+      "source_sha256": "97c31bb651421fa44d6cdc91a48de41fa7979712d81dd336f327109a6c9851b7",
+      "destination_sha256": "97c31bb651421fa44d6cdc91a48de41fa7979712d81dd336f327109a6c9851b7",
+      "relocation_changed_bytes": false
+    },
+    {
+      "source": "packages/gsp_record_protocol/src/gsp_protocol/__main__.py",
+      "destination": "applicative_infrastructure/common/packages/gsp_record_protocol/src/gsp_protocol/__main__.py",
+      "source_sha256": "f1ac8b22a03d72c1349b3d6c1102adaf6d8c66467362067174bc3c248b51c407",
+      "destination_sha256": "f1ac8b22a03d72c1349b3d6c1102adaf6d8c66467362067174bc3c248b51c407",
+      "relocation_changed_bytes": false
+    },
+    {
+      "source": "packages/gsp_record_protocol/src/gsp_protocol/_schema.py",
+      "destination": "applicative_infrastructure/common/packages/gsp_record_protocol/src/gsp_protocol/_schema.py",
+      "source_sha256": "a23da48c4b98d4efcefbf393fff1dcc352f8e86fb9d4d28f4982de9b7b7c8eff",
+      "destination_sha256": "a23da48c4b98d4efcefbf393fff1dcc352f8e86fb9d4d28f4982de9b7b7c8eff",
+      "relocation_changed_bytes": false
+    },
+    {
+      "source": "packages/gsp_record_protocol/src/gsp_protocol/core.py",
+      "destination": "applicative_infrastructure/common/packages/gsp_record_protocol/src/gsp_protocol/core.py",
+      "source_sha256": "e654fc9287cedd5c1bb3205b0df7eaf4a8d8f2c47ab304c19265da9391113807",
+      "destination_sha256": "e654fc9287cedd5c1bb3205b0df7eaf4a8d8f2c47ab304c19265da9391113807",
+      "relocation_changed_bytes": false
+    },
+    {
+      "source": "packages/gsp_record_protocol/src/gsp_protocol/schemas/protocol.schema.json",
+      "destination": "applicative_infrastructure/common/packages/gsp_record_protocol/src/gsp_protocol/schemas/protocol.schema.json",
+      "source_sha256": "8f4a6da95e366429eae58cffe9b1bb791d16266ba725107e73f0c63b61a10652",
+      "destination_sha256": "8f4a6da95e366429eae58cffe9b1bb791d16266ba725107e73f0c63b61a10652",
+      "relocation_changed_bytes": false
+    },
+    {
+      "source": "packages/gsp_record_protocol/tests/fixtures/graph_snapshot.json",
+      "destination": "applicative_infrastructure/common/packages/gsp_record_protocol/tests/fixtures/graph_snapshot.json",
+      "source_sha256": "f63a016c471bf59e8a6c6a0bd409e3a70167d8d49af2e37c3d6974a363d38268",
+      "destination_sha256": "f63a016c471bf59e8a6c6a0bd409e3a70167d8d49af2e37c3d6974a363d38268",
+      "relocation_changed_bytes": false
+    },
+    {
+      "source": "packages/gsp_record_protocol/tests/fixtures/legacy_snapshot.json",
+      "destination": "applicative_infrastructure/common/packages/gsp_record_protocol/tests/fixtures/legacy_snapshot.json",
+      "source_sha256": "bb8ed56397a88e263fdae855c0fe9f6f1e88360b077c5cf2bb4e8c3f4239ab41",
+      "destination_sha256": "bb8ed56397a88e263fdae855c0fe9f6f1e88360b077c5cf2bb4e8c3f4239ab41",
+      "relocation_changed_bytes": false
+    },
+    {
+      "source": "packages/gsp_record_protocol/tests/test_protocol.py",
+      "destination": "applicative_infrastructure/common/packages/gsp_record_protocol/tests/test_protocol.py",
+      "source_sha256": "bac6c988d387e3e816145b71e194d1ea09167147147f63ecdbc491a16db61298",
+      "destination_sha256": "bac6c988d387e3e816145b71e194d1ea09167147147f63ecdbc491a16db61298",
+      "relocation_changed_bytes": false
+    },
+    {
+      "source": "webapp/DESIGN.md",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/DESIGN.md",
+      "source_sha256": "6d388a6b14d046c1c84782d7ee43fe86e81ea54b2cbb79e63c3cbfc630552805",
+      "destination_sha256": "bdc48f69a9b8004dda210fa5f4cfa63f6304e1b98cb2bd230d81089f81fd648f",
+      "relocation_changed_bytes": true
+    },
+    {
+      "source": "webapp/README.md",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/README.md",
+      "source_sha256": "2c2c24a690f5d0d106a0d318d4c547c336757b02eaddeed24d79bd94b8de9378",
+      "destination_sha256": "372f3266ea900e89ff2a26c4688b28fa94395d70f7cb341e42c4454f146b8bcc",
+      "relocation_changed_bytes": true
+    },
+    {
+      "source": "webapp/TESTING.md",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/TESTING.md",
+      "source_sha256": "3d563e0bfe6b36ac032afb05b6d01ae8c11d5cfb7533efa510504c5effc6002d",
+      "destination_sha256": "85b5fb336acea51df03adb5bb15446897dc1e58d92586a0531d713c3ca68e25e",
+      "relocation_changed_bytes": true
+    },
+    {
+      "source": "webapp/generative_app/__init__.py",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/generative_app/__init__.py",
+      "source_sha256": "ed12d22c54f1a5852ed02b7904dab420eeb5f425786f94930e68ba9df9339b4c",
+      "destination_sha256": "eae473c4e8175b549af6a936ce2aac90c6f699fbe74b4b3e171a031b288a21b1",
+      "relocation_changed_bytes": true
+    },
+    {
+      "source": "webapp/generative_app/git_store.py",
+      "destination": "applicative_infrastructure/common/packages/gsp_git_store/src/gsp_git_store/store.py",
+      "source_sha256": "4d726a345125a187390e3183b8ec97d9d464c6960fdc5b75e238acaaefdafbda",
+      "destination_sha256": "4d726a345125a187390e3183b8ec97d9d464c6960fdc5b75e238acaaefdafbda",
+      "relocation_changed_bytes": false
+    },
+    {
+      "source": "webapp/generative_app/protocol_api.py",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/generative_app/protocol_api.py",
+      "source_sha256": "ff9b53fa00c09d7c82a4d08995eaa3973c84efdef431c4211a9a50c589d86984",
+      "destination_sha256": "0334d046c4dd3cd740061eea73bf6f3d09cf14cb62c996052e6ebde0cefb2198",
+      "relocation_changed_bytes": true
+    },
+    {
+      "source": "webapp/generative_app/static/app.js",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/generative_app/static/app.js",
+      "source_sha256": "20dcb19c0c477c6a8a068422712a822bbf77d3b0e5ab861f4cdfc520f3c008c2",
+      "destination_sha256": "20dcb19c0c477c6a8a068422712a822bbf77d3b0e5ab861f4cdfc520f3c008c2",
+      "relocation_changed_bytes": false
+    },
+    {
+      "source": "webapp/generative_app/static/favicon.svg",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/generative_app/static/favicon.svg",
+      "source_sha256": "4efb52fd097973ea199654d3b6cf69434244574387b15e0f46c1cc57749511a6",
+      "destination_sha256": "4efb52fd097973ea199654d3b6cf69434244574387b15e0f46c1cc57749511a6",
+      "relocation_changed_bytes": false
+    },
+    {
+      "source": "webapp/generative_app/static/graph.js",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/generative_app/static/graph.js",
+      "source_sha256": "02297584aa01e5001fbf7e8250247ed24dbfb9175b81dd96151fab81fca424b1",
+      "destination_sha256": "02297584aa01e5001fbf7e8250247ed24dbfb9175b81dd96151fab81fca424b1",
+      "relocation_changed_bytes": false
+    },
+    {
+      "source": "webapp/generative_app/static/style.css",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/generative_app/static/style.css",
+      "source_sha256": "9534bb62b6278adc3aa56a8949ba87cdc21ea64c74ab32c94526b56969bf48b7",
+      "destination_sha256": "9534bb62b6278adc3aa56a8949ba87cdc21ea64c74ab32c94526b56969bf48b7",
+      "relocation_changed_bytes": false
+    },
+    {
+      "source": "webapp/generative_app/static/vendor/cytoscape.LICENSE",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/generative_app/static/vendor/cytoscape.LICENSE",
+      "source_sha256": "eb319c6e6f233607f71e8e2f450391751883cfc0eeb3ca7ef574c13d1d9c2203",
+      "destination_sha256": "eb319c6e6f233607f71e8e2f450391751883cfc0eeb3ca7ef574c13d1d9c2203",
+      "relocation_changed_bytes": false
+    },
+    {
+      "source": "webapp/generative_app/static/vendor/cytoscape.min.js",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/generative_app/static/vendor/cytoscape.min.js",
+      "source_sha256": "5f3b5b529546d5af1fc5628590af033b74511a5b6f789f5f4682845863228b91",
+      "destination_sha256": "5f3b5b529546d5af1fc5628590af033b74511a5b6f789f5f4682845863228b91",
+      "relocation_changed_bytes": false
+    },
+    {
+      "source": "webapp/generative_app/static/vendor/cytoscape.provenance.json",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/generative_app/static/vendor/cytoscape.provenance.json",
+      "source_sha256": "503987d7f15b0e9d102c60da850fd5120fb7f64149023e7f14e97dd1893cfc65",
+      "destination_sha256": "503987d7f15b0e9d102c60da850fd5120fb7f64149023e7f14e97dd1893cfc65",
+      "relocation_changed_bytes": false
+    },
+    {
+      "source": "webapp/generative_app/templates/index.html",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/generative_app/templates/index.html",
+      "source_sha256": "358c499c6af1128f627e794489836b6072ece9a9e01cdcf00333733042783d40",
+      "destination_sha256": "358c499c6af1128f627e794489836b6072ece9a9e01cdcf00333733042783d40",
+      "relocation_changed_bytes": false
+    },
+    {
+      "source": "webapp/pytest.ini",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/pytest.ini",
+      "source_sha256": "b160d82f7811555051f8966d8e02750a985227c1d022208c784e606946f2eada",
+      "destination_sha256": "b160d82f7811555051f8966d8e02750a985227c1d022208c784e606946f2eada",
+      "relocation_changed_bytes": false
+    },
+    {
+      "source": "webapp/requirements-dev.txt",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/requirements-dev.txt",
+      "source_sha256": "abe81bfd7bcdc24056d68c89b4cc1b95fe9d6d0b7f2b6b93fb0b75ef6699ff1d",
+      "destination_sha256": "abe81bfd7bcdc24056d68c89b4cc1b95fe9d6d0b7f2b6b93fb0b75ef6699ff1d",
+      "relocation_changed_bytes": false
+    },
+    {
+      "source": "webapp/requirements.lock",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/requirements.lock",
+      "source_sha256": "b2c9b3280dece23f96f4ed806a73cda631645ff52994c6b292736eba67a38e58",
+      "destination_sha256": "95e07555b25154e61cbc530b6c04271a052ae6f27c595300606691004901948e",
+      "relocation_changed_bytes": true
+    },
+    {
+      "source": "webapp/requirements.txt",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/requirements.txt",
+      "source_sha256": "7529c3fa09cb7fcea1e2824d544803dd98e746f84246b0e81b8cbc99fb065d85",
+      "destination_sha256": "34c967f42a9ba9a0a652274195d2c9505ee855aa91466cd9c7ef8f8944c1c98d",
+      "relocation_changed_bytes": true
+    },
+    {
+      "source": "webapp/run.py",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/run.py",
+      "source_sha256": "10344b5f1a3070dd7aef914ccad9dc0f19868f1e341c4c03347a8d7ca282782e",
+      "destination_sha256": "10344b5f1a3070dd7aef914ccad9dc0f19868f1e341c4c03347a8d7ca282782e",
+      "relocation_changed_bytes": false
+    },
+    {
+      "source": "webapp/tests/test_app.py",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/tests/test_app.py",
+      "source_sha256": "2c182c991e095f4a1cd295bef877b08abe44d6a8f8db3915c9f6051c75089b8b",
+      "destination_sha256": "a808a815658062413da3feb29e4ab30291fc43ca8b9a0a37affb1885c8ebd009",
+      "relocation_changed_bytes": true
+    },
+    {
+      "source": "webapp/tests/test_browser.py",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/tests/test_browser.py",
+      "source_sha256": "3375792424bbe3626829235a29a0592acde8b884e5d7ad09989bf098656de533",
+      "destination_sha256": "c279400adbf8cf8f9a9811ddc7ddaa2430630c63c7b123d964b7d38110898583",
+      "relocation_changed_bytes": true
+    },
+    {
+      "source": "webapp/tests/test_git_store.py",
+      "destination": "applicative_infrastructure/common/packages/gsp_git_store/tests/test_git_store.py",
+      "source_sha256": "ec0be2b8e0d0d8084770fa1444331de3705f2298e84fb107f651b0b608221557",
+      "destination_sha256": "4336e78bac38825c70c854fb924dcb0ba1373abe49ecbc689f7ec95d259a2bd0",
+      "relocation_changed_bytes": true
+    },
+    {
+      "source": "webapp/tests/test_graph_browser.py",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/tests/test_graph_browser.py",
+      "source_sha256": "5a38dc701f1a9e3a0e1fbcf865afe00c9378d5eab2a0ffe5108b558ae34da8e0",
+      "destination_sha256": "a0702ab16beb54c163eccad7d7eb6872773c41ec75c579d46660a15aa1af0d3c",
+      "relocation_changed_bytes": true
+    },
+    {
+      "source": "webapp/tests/test_protocol_api.py",
+      "destination": "applicative_infrastructure/gr_generalized_application/web_application/tests/test_protocol_api.py",
+      "source_sha256": "635d9771d9beb2789dc470fc5f7588cd965623edfd7c9e5e705cf263c2e969cb",
+      "destination_sha256": "cdb4516bc893c40b186920733a31ccbd3255685bdc1fa3a392aecd57ec03fb9d",
+      "relocation_changed_bytes": true
+    },
+    {
+      "source": "webapp/tests/test_transactions_store.py",
+      "destination": "applicative_infrastructure/common/packages/gsp_git_store/tests/test_transactions_store.py",
+      "source_sha256": "946dddfb525220eed9e56412ab84a248bc5407e469cd0249e97be9f3d6ba4ead",
+      "destination_sha256": "4b4ccd127805fe9c1b8be01d80138713c2150ba2ab5fafb1899425405aaf9cd4",
+      "relocation_changed_bytes": true
+    }
+  ],
+  "retirement": {
+    "webapp": "build/retired-webapp",
+    "packages/gsp_record_protocol": "build/retired-gsp-record-protocol"
+  },
+  "verification": "migration_verification.md"
+}

@@ -1,0 +1,19 @@
+# Private application state and recreated environments belong to the operator.
+/.runtime/
+build/
+**/node_modules/
+**/dist/
+**/.venv/
+**/__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.env
+.env.*
+!.env.example
+test-results/
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+*.key
