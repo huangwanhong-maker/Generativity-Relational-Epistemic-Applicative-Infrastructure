@@ -1,11 +1,12 @@
 # GSP record protocol package
 
 **Class:** Experimental implementation package  
+**Package version:** `0.3.0` (additive temporal capability; base protocol identifiers below are unchanged)  
 **Protocol:** `gsp-record-protocol/0.2`  
 **Record schema:** `gsp-workspace/0.2`  
 **Profile:** `gsp.general/0.2`
 
-This independent Python package validates bounded record graphs, prepares transactions, and produces an incidence projection. It has no Flask, database, filesystem-storage, or Git dependency. The CLI reads a supplied JSON file; the preparation library does not publish changes or inspect actual attachment bytes.
+This independent Python package validates bounded record graphs, prepares transactions, and produces incidence and event-based spacetime projections. It has no Flask, database, filesystem-storage, or Git dependency. The CLI reads a supplied JSON file; the preparation library does not publish changes or inspect actual attachment bytes.
 
 The [information-model Specification](../../../../specifications/GR-SPEC-120-information-model/GR-SPEC-120.md) defines the experimental contract and its limits. The [design](../../../../docs/planning/graph_workspace_design.md) separates semantic graphs, recording history, and views. Passing these validators is not factual verification or full GR conformance.
 
@@ -30,6 +31,7 @@ Restricted Windows environments can supply an existing writable parent and a fre
 | `normalize_snapshot(snapshot)` | Deep-copied read adaptation with `legacy`, `source_schema_version`, and `read_adaptation`. Original schema declarations remain unchanged. |
 | `validate_snapshot(snapshot)` | Schema and scoped semantic report, including warnings for unsupported or unstructured material. Does not inspect actual file bytes. |
 | `project_graph(snapshot)` | Snapshot-bound nodes and incidence/neutral-reference edges, warnings, selection declaration, and source `head`. |
+| `project_spacetime(snapshot, after=None)` | Explicit event partial order, ancestor-closed cut, scoped ontology topology, trajectory groups and diagnostics. `None` selects all events; `[]` selects the empty cut. No storage writes. |
 | `request_digest(tx, files_meta={})` | SHA-256 of RFC 8785 canonical JSON `{transaction: tx, files: files_meta}`. File metadata comes from an adapter that has actually hashed received bytes. |
 | `prepare_transaction(snapshot, tx, actor, now, files_meta={})` | Candidate `snapshot`, `receipt`, and `changed_record_ids`. Inputs are unchanged. The returned head still identifies the expected parent. |
 
@@ -39,13 +41,21 @@ The actor has `id` and `display_name`. The recording timestamp is an ISO 8601 va
 
 ## Module and graph rules
 
-Implemented version `1` modules are `gsp.relation`, `gsp.notes`, and `gsp.files`. Optional unknown modules or unsupported versions survive unrelated edits exactly and remain read-only. Required unsupported modules block project mutation. New unknown modules cannot be introduced through this implementation's editing interface.
+Implemented version `1` modules are `gsp.relation`, `gsp.notes`, `gsp.files`, `gsp.event_order`, and `gsp.temporal_extent`. The two temporal modules require `required: true` so earlier readers preserve them and block edits that cannot validate their constraints. Optional unknown modules or unsupported versions survive unrelated edits exactly and remain read-only. Required unsupported modules block project mutation. New unknown modules cannot be introduced through this implementation's editing interface.
 
 An unsupported declared project profile also blocks mutation, including migration. Reads preserve its declaration and report an interpretation warning. An absent profile in a legacy workspace remains eligible for explicit migration. A structural report does not claim to assess an unfamiliar profile's additional requirements.
 
 Every record remains a node. A structured Relation is independently selectable and contributes one edge per participant incidence. Orientation `in` points from the participant to the relation; `out` points from the relation to the participant; `undirected` has no asserted arrow direction. A neutral cross-reference is separately labeled `kind: reference`; its `source` records where the navigation reference is stored, without asserting a directional substantive relation.
 
 Legacy snapshots retain their `gsp-workspace/0.1` declarations during reads. Only a sole `project.migrate` operation, with the `migration` change category, produces current schema content. Migration does not infer relation participants or change earlier account attribution/timestamps.
+
+## Event-defined topology
+
+The additive [GR-SPEC-121 extension](../../../../specifications/GR-SPEC-121-event-time-projection/GR-SPEC-121.md) keeps the base protocol/schema/profile at 0.2. Event order is asserted by first-class Relation records with matching `gsp.relation` incidences. Git ancestry, recording timestamps and free-text dates never determine that order. Event ranks support layout; incomparable events are not thereby simultaneous.
+
+Temporal extents specify inclusive start and exclusive end boundaries, each explicitly an Event reference, unknown, or unbounded within a stated account scope. Records without an extent remain unscoped. Only accounts established active at a cut contribute to its induced topology; omitted relation participants are diagnosed. An optional subject reference groups accounts into a stated trajectory without proving target identity or continuity.
+
+Cycles are retained as contradictory accounts with a diagnostic event graph and no fabricated cut or topology. Unsupported event-order versions likewise prevent a cut; unsupported extent versions make the affected presence indeterminate. This projection selects applicability claims; it does not simulate event effects, infer causation, resolve competing accounts, or reconstruct an unrecorded historical state.
 
 ## Limits and evidence
 

@@ -9,10 +9,11 @@ from .core import (
     ProtocolError, capabilities, normalize_snapshot, prepare_transaction,
     project_graph, request_digest, validate_snapshot, validate_transaction,
 )
+from .temporal import project_spacetime
 
 __all__ = [
     "PROTOCOL_VERSION", "SCHEMA_VERSION", "PROFILE", "RECORD_ROLES",
     "CHANGE_CATEGORIES", "ProtocolError", "capabilities", "normalize_snapshot",
-    "validate_snapshot", "validate_transaction", "project_graph",
+    "validate_snapshot", "validate_transaction", "project_graph", "project_spacetime",
     "request_digest", "prepare_transaction",
 ]

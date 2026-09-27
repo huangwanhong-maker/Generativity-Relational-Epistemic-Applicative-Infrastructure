@@ -10,7 +10,7 @@ $verificationPython = '.\applicative_infrastructure\.runtime\environments\genera
 & $verificationPython -m pytest -c applicative_infrastructure/gr_generalized_application/web_application/pytest.ini applicative_infrastructure/gr_generalized_application/web_application/tests applicative_infrastructure/common/packages/gsp_record_protocol/tests applicative_infrastructure/common/packages/gsp_git_store/tests --basetemp build/gsp-tests -q
 ```
 
-Set `$env:GSP_BROWSER='msedge'` to include the three browser journeys, using installed Edge. `chrome` or a separately installed Playwright Chromium can also be selected. The chosen `--basetemp` is disposable test output and must not contain runtime or other valuable files. A short workspace path avoids Git for Windows path-length restrictions in cloned test repositories.
+Set `$env:GSP_BROWSER='msedge'` to include the browser journeys, using installed Edge. `chrome` or a separately installed Playwright Chromium can also be selected. The chosen `--basetemp` is disposable test output and must not contain runtime or other valuable files. A short workspace path avoids Git for Windows path-length restrictions in cloned test repositories.
 
 Academia's native Python and npm checks remain separately documented in its [guide](../../gr_academia_application/README.md). The original domain protocol fixtures continue to assess that domain implementation. They do not establish a GRRP/general-protocol mapping.
 

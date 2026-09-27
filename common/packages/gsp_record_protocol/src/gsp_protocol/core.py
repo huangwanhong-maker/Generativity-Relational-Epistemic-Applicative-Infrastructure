@@ -21,7 +21,9 @@ PROFILE = "gsp.general/0.2"
 RECORD_ROLES = ("Entity", "State", "Event", "Process", "Relation", "Property")
 CHANGE_CATEGORIES = ("description", "represented_change", "evidence_or_interpretation",
                      "classification", "maintenance", "migration")
-BUILTINS = {"gsp.relation": "RelationData", "gsp.notes": "NotesData", "gsp.files": "FilesData"}
+BUILTINS = {"gsp.relation": "RelationData", "gsp.notes": "NotesData", "gsp.files": "FilesData",
+            "gsp.event_order": "EventOrderData", "gsp.temporal_extent": "TemporalExtentData"}
+REQUIRED_MODULES = {"gsp.event_order", "gsp.temporal_extent"}
 ENUMS = {
     "record_type": RECORD_ROLES,
     "epistemic_mode": ("observed", "reported", "inferred", "interpreted", "retrospective"),
@@ -64,7 +66,8 @@ def capabilities() -> dict:
         "profile": PROFILE,
         "record_roles": list(RECORD_ROLES),
         "change_categories": list(CHANGE_CATEGORIES),
-        "modules": {key: {"versions": ["1"], "required_default": False} for key in BUILTINS},
+        "modules": {key: {"versions": ["1"], "required_default": key in REQUIRED_MODULES,
+                          **({"required": True} if key in REQUIRED_MODULES else {})} for key in BUILTINS},
         "operations": ["record.create", "record.update", "module.set", "module.remove",
                        "file.attach", "file.replace", "file.detach", "project.migrate"],
         "limits": {"operations": MAX_OPERATIONS, "records": MAX_RECORDS,
@@ -72,6 +75,7 @@ def capabilities() -> dict:
                    "file_bytes": MAX_FILE_BYTES, "transaction_file_bytes": MAX_TRANSACTION_FILE_BYTES,
                    "module_bytes": MAX_MODULE_BYTES, "transaction_json_bytes": MAX_REQUEST_BYTES},
         "graph_projection": "gsp.incidence/1",
+        "spacetime_projection": "gsp.spacetime/1",
         "canonicalization": "RFC 8785",
         "limitations": list(LIMITATIONS),
     }
@@ -200,6 +204,8 @@ def _validate_modules(record: dict, ids: set[str], warnings: list[dict]) -> None
                              "message": "This module is preserved without interpretation; required unknown constraints block mutation."})
             continue
         _validate(BUILTINS[module_id], module["data"], prefix)
+        if module_id in REQUIRED_MODULES and module.get("required") is not True:
+            raise ProtocolError("temporal_module_required", "Temporal modules require required=true so readers without their semantics cannot mutate the project.", {prefix: "Set required to true."})
         data = module["data"]
         if module_id == "gsp.relation":
             if "Relation" not in record["record_roles"]:
@@ -258,6 +264,8 @@ def validate_snapshot(snapshot: dict) -> dict:
         if "Relation" in record["record_roles"] and not _module_known("gsp.relation", record["modules"].get("gsp.relation", {})):
             warnings.append({"code": "unstructured_relation", "record_id": record["id"],
                              "message": "This Relation account has no interpreted participant module; no incidence is inferred."})
+    from .temporal import validate_temporal_semantics
+    validate_temporal_semantics(adapted["records"], warnings)
     if adapted["legacy"]:
         warnings.append({"code": "legacy_read_adaptation", "message": "The source remains a legacy project; explicit migration is required for mutation."})
     return {"valid": True, "protocol_version": PROTOCOL_VERSION, "profile": PROFILE,
@@ -269,6 +277,11 @@ def validate_snapshot(snapshot: dict) -> dict:
 def project_graph(snapshot: dict) -> dict:
     report = validate_snapshot(snapshot)
     adapted = normalize_snapshot(snapshot)
+    return _project_graph(adapted, report)
+
+
+def _project_graph(adapted: dict, report: dict) -> dict:
+    """Build incidence output from an already validated, normalized snapshot."""
     nodes, edges = [], []
     for record in sorted(adapted["records"], key=lambda item: item["id"]):
         relation = record["modules"].get("gsp.relation", {})
@@ -361,7 +374,7 @@ def _new_record(value: dict, actor: dict, now: str) -> dict:
     for module_id, module in record["modules"].items():
         if not _module_known(module_id, module):
             raise ProtocolError("unsupported_module", "New records can only introduce supported module versions.")
-        module.setdefault("required", False)
+        module.setdefault("required", module_id in REQUIRED_MODULES)
         if module_id == "gsp.files" and module["data"].get("items") != []:
             raise ProtocolError("file_operation_required", "Create linked files through file operations.")
         _module_defaults(module_id, module)
@@ -495,7 +508,7 @@ def prepare_transaction(snapshot: dict, tx: dict, actor: dict, now: str,
                     raise ProtocolError("unsupported_module", "Unsupported module data is read-only and cannot be overwritten.")
                 if not _module_known(module_id, module):
                     raise ProtocolError("unsupported_module", "Only supported module versions can be introduced or edited.")
-                module.setdefault("required", False)
+                module.setdefault("required", module_id in REQUIRED_MODULES)
                 _module_defaults(module_id, module)
                 if module_id == "gsp.files":
                     if module["data"].get("items") != [] or (previous is not None and previous["data"].get("items")):

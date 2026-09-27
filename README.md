@@ -34,7 +34,7 @@ applicative_infrastructure/                 This Git repository
 | Area | Responsibility |
 |---|---|
 | [Common packages](common/README.md) | Reusable implementation with no dependency on a domain application |
-| [Generalized application](gr_generalized_application/README.md) | General records, visual graphs, modules, retained files and project transactions |
+| [Generalized application](gr_generalized_application/README.md) | General records, visual graphs, event-defined spacetime and trajectories, modules, retained files and project transactions |
 | [Academia application](gr_academia_application/README.md) | Scholarly trajectories, native GRRP operations and domain workspaces |
 | [Verification](common/conformance/README.md) | Tests and the limits of their interoperability claims |
 
@@ -142,7 +142,7 @@ npm.cmd --prefix gr_academia_application/web_application run build
 
 Use bin/python instead of Scripts/python.exe and npm instead of npm.cmd on POSIX. Pytest's temporary-output directory is disposable and must never name retained runtime data. Prefer a short checkout/test path on Windows because Git clone tests can encounter path-length limits.
 
-Set the GSP_BROWSER environment variable to msedge to include the three generalized browser journeys using installed Edge; the [browser test guide](gr_generalized_application/web_application/TESTING.md) describes alternatives. The migration recorded 427 passing tests and one platform-specific skip across the applications and shared packages. These dated checks verify observed behavior and do not establish cross-application semantic equivalence.
+Set the GSP_BROWSER environment variable to msedge to include the generalized browser journeys using installed Edge; the [browser test guide](gr_generalized_application/web_application/TESTING.md) describes alternatives. The migration recorded 427 passing tests and one platform-specific skip across the applications and shared packages. These dated checks verify observed behavior and do not establish cross-application semantic equivalence.
 
 ## Current boundaries and further domains
 
