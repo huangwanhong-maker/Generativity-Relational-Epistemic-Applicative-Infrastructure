@@ -40,6 +40,36 @@ applicative_infrastructure/                 This Git repository
 
 This repository is itself a submodule of the programme. Programme standards, specifications, manuscripts, governance and ADRs remain canonical in the parent repository. Links such as the [Programme Brief](../PROGRAMME_BRIEF.md), [GR-SPEC-120](../specifications/GR-SPEC-120-information-model/GR-SPEC-120.md), [GR-SPEC-130](../specifications/GR-SPEC-130-interchange/GR-SPEC-130.md) and [consolidation decision](../decisions/ADR-0009-applicative-infrastructure-consolidation.md) resolve in that complete checkout. An infrastructure-only clone can run the applications without those publication files.
 
+## Demo and gallery
+
+The generalized application's **River Commons** project demonstrates a fictional shared-garden inquiry with 31 records, all six operational roles, five Events, six retained materials and seven Git revisions. Its recorded event order, changing topology, subject trajectories and corrected accounts can be explored together.
+
+![The River Commons graph and a Relation's named participants](docs/gallery/generalized-record-graph.png)
+
+![An event partial order in the generalized Spacetime workspace](docs/gallery/generalized-spacetime.png)
+
+### Visualized spacetime
+
+The event graph supplies a partial order; each chosen boundary selects a topology of scoped ontology records. These two views share one preserved project revision:
+
+**After the access agreement — 2 events passed, 10 projected records.** Trial access and provisional stewardship apply.
+
+![Selected agreement boundary, its ontology topology and the trial-access State](docs/gallery/generalized-spacetime-earlier.png)
+
+**After the review — 4 events passed, 13 projected records.** Trial accounts end; revised access and stewardship accounts apply.
+
+![Selected review boundary, changed topology and the revised-access State](docs/gallery/generalized-spacetime-later.png)
+
+The garden's subject trajectory connects **Access not yet arranged**, **A garden open for a trial** and **Access under a revised rota**, retaining their event bounds:
+
+![Garden and stewardship-team trajectories across event boundaries](docs/gallery/generalized-spacetime-trajectories.png)
+
+These cuts do not assign a common clock or infer simultaneity. The independent observation remains unordered, and selecting a cut creates no Git revision.
+
+See the [complete gallery](gr_generalized_application/docs/gallery/README.md) for ten actual UI screenshots, including earlier and later topology at one revision, file controls and a preserved historical contradiction. The pictured graph uses the visible **care** search filter and a local display arrangement. All content is synthetic.
+
+The [demo runbook](gr_generalized_application/web_application/demo/README.md) creates a separate account through the ordinary API and documents screenshot regeneration. Its private credentials and project metadata live under ignored `.runtime/demo/`; the preview images above are deliberate copies maintained by the capture script. This demonstration uses the generalized protocol and does not imply an academia protocol migration.
+
 ## Clone and maintain submodules
 
 With GitHub SSH access configured, obtain this repository and both application submodules:
